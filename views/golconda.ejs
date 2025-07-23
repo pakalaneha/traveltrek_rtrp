@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelTrek - Hussain Sagar Lake</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+        :root {
+            --hyderabad-blue: #1a5276;
+            --charminar-gold: #f1c40f;
+            --hyderabad-pink: #e84393;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation Sidebar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5px;
+            z-index: 10;
+            color: whitesmoke;
+        }
+
+        .logo {
+            font-family: var(--ff-rubik-dirt);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            padding: 0 1.2rem;
+            font-weight: 300;
+            color: rgb(254, 252, 252);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            font-family: var(--ff-montserrat);
+            margin: 0px 15px;
+        }
+
+        .nav-links li a {
+            color: white;
+            cursor: pointer;
+        }
+
+        .cir_border {
+            padding: 6px 20px;
+            font-weight: bold;
+            border: 2px hidden whitesmoke;
+            border-radius: 20px;
+            margin: 0px -10px;
+        }
+
+        header {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/bg.png");
+            background-position: bottom;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-content a {
+            letter-spacing: 0.1rem;
+        }
+
+        .header-content h2 {
+            font-size: 4vmin;
+        }
+
+        .line {
+            width: 150px;
+            height: 4px;
+            background: #fc036b;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .header-content h1 {
+            font-size: 7vmin;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .ctn {
+            font-family: var(--ff-montserrat);
+            font-size: var(--fs-links-btns);
+            font-weight: 700;
+            padding: 13px 50px;
+            background: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            margin-top: 5%;
+            width: 98%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--hyderabad-blue), var(--text-dark));
+            height: fit-content;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-5px);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--charminar-gold);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hyderabad-badge {
+            display: inline-block;
+            background: var(--hyderabad-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: white;
+        }
+
+        /* Main Image */
+        .main-image-container {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            height: 500px;
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-container:hover {
+            transform: translateY(-5px) rotate(1deg);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image-container:hover .main-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        /* Description Section */
+        .description {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--hyderabad-blue);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .description:hover {
+            transform: translateY(-3px);
+        }
+
+        .description h2 {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description h2 i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        .historical-fact {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--charminar-gold);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Nearby Sections */
+        .nearby-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .restaurants,
+        .famous-places {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurants {
+            border-top: 5px solid var(--hyderabad-pink);
+        }
+
+        .famous-places {
+            border-top: 5px solid var(--charminar-gold);
+        }
+
+        .restaurants:hover {
+            transform: translateY(-5px) translateX(5px);
+        }
+
+        .famous-places:hover {
+            transform: translateY(-5px) translateX(-5px);
+        }
+
+        .section-title {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        /* Restaurant Cards */
+        .restaurant {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--hyderabad-pink);
+        }
+
+        .restaurant:last-child,
+        .place:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .restaurant h3,
+        .place h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant h3 i,
+        .place h3 i {
+            margin-right: 8px;
+            color: var(--hyderabad-pink);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .accommodations {
+            border-top: 5px solid var(--hyderabad-blue);
+        }
+
+        .accommodations:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurants,
+        .famous-places,
+        .accommodations {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-image,
+        .place-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .restaurant:hover .restaurant-image,
+        .place:hover .place-image {
+            transform: scale(1.05);
+        }
+
+        .hyderabadi-badge {
+            background-color: var(--hyderabad-pink);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        .must-try {
+            background-color: #fff9e6;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .timings {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timings i {
+            margin-right: 8px;
+            color: var(--charminar-gold);
+        }
+
+        /* Famous Places */
+        .place {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .place:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .distance {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            margin: 8px 0;
+        }
+
+        .distance i {
+            margin-right: 8px;
+            color: var(--hyderabad-blue);
+        }
+
+        /* Google Maps Section */
+        .maps-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--hyderabad-pink);
+            /* transition olhou: transform 0.3s ease; */
+        }
+
+        .maps-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .maps-container {
+            height: 450px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .nearby-section {
+                flex-direction: column;
+            }
+
+            .main-image-container {
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .image-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeevaiah Park - TravelTrek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golkonda Fort - TravelTrek</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition(); }'>
+    <nav class="navbar glass" style="height: 70px">
+        <span><a href="#home" style="display: flex; align-items: center"><img class="imgigest" src="./img/mountain.png"
+                    width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo"> TravelTrek</h1>
+            </a></span>
+        <ul class="nav-links">
+            <!-- <li>
+                <a href="index.html#home" id="pri" class="active cir_border">Home</a>
+            </li> -->
+            <li><a href="#description" id="sec" class="cir_border">About</a></li>
+            <li>
+                <a href="#restaurants" id="tri" class="cir_border">Restaurants</a>
+            </li>
+            <li>
+                <a href="#attractions" id="quad" class="cir_border">Attractions</a>
+            </li>
+            <li>
+                <a href="#accommodations" id="quad" class="cir_border">Accommodations</a>
+            </li>
+            <li><a href="#map" id="quint" class="cir_border">Map</a></li>
+            <li>
+                <div>
+                    <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <label for="checkbox" class="label">
+                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-sun-o"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+    <!--navbar-->
+    <div class="container">
+        <header id="header">
+            <h1 style="text-align: center;"><i class="fas fa-chess-rook"></i> Golkonda Fort</h1>
+            <p>The historic fortress of Hyderabad</p>
+            <div class="hyderabad-badge">
+                <i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India
+            </div>
+        </header>
+
+        <div class="main-image-container">
+            <img src="https://th.bing.com/th/id/R.064f2b98c3026cb037c9f3b468292fd1?rik=1Y4WCsTJseakjQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-y62A9HnXRr4%2fU7f8wnsQFeI%2fAAAAAAAABq4%2fbxFT15Bc1Xk%2fs1600%2fGolconda-Fort.jpg&ehk=7Oasvei5%2bDyeDf8H3r9lDRcQ2ng8enuiBLSiYeOfEa0%3d&risl=&pid=ImgRaw&r=0"
+                alt="Golkonda Fort" class="main-image">
+            <div class="image-overlay">
+                <h2>"The Citadel of Splendor"</h2>
+                <p>Capital of the Qutb Shahi Dynasty</p>
+            </div>
+        </div>
+
+        <section class="description" id="description">
+            <h2><i class="fas fa-history"></i> Historical Significance</h2>
+            <p>Golkonda Fort is a historic fortress in Hyderabad, known for its impressive architecture, strategic location, and rich history. It was once the capital of the Qutb Shahi dynasty and is famous for its acoustic system, grand gates, and diamond trade legacy, including the Koh-i-Noor diamond.</p>
+
+            <div class="historical-fact">
+                Originally built as a mud fort in the 13th century by the Kakatiya dynasty, it was later fortified by the Qutb Shahi rulers in the 16th century. The fort's acoustic system allows whispers at the entrance to be heard at the highest point, a marvel of engineering.
+            </div>
+
+            <p>The fort is a popular tourist destination, offering panoramic views of Hyderabad, light and sound shows narrating its history, and exploration of its palaces, mosques, and royal chambers. It remains a symbol of Hyderabad's glorious past.</p>
+
+            <h3 style="margin-top: 20px; color: var(--hyderabad-blue);"><i class="fas fa-archway"></i> Key Features</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Acoustic system for communication across the fort</li>
+                <li>Eight grand gates and a 10-km outer wall</li>
+                <li>Royal palaces, mosques, and audience halls</li>
+                <li>Evening light and sound show in multiple languages</li>
+                <li>Strategic hilltop location with scenic views</li>
+            </ul>
+        </section>
+
+        <div class="nearby-section">
+            <section class="restaurants" id="restaurants">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> Nearby Restaurants</h2>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.g9qeedgiUp667Kzo7MlUJwHaEo?rs=1&pid=ImgDetMain"
+                            alt="Golconda Pavilion" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Golconda Pavilion</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Somajiguda (4 km from fort)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00 PM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Avg. Price for Two:</span> ₹600–₹800
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.AkPZjKrssz5oovgT1YSm_gHaEO?rs=1&pid=ImgDetMain"
+                            alt="Bawarchi Restaurant" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Bawarchi Restaurant</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> RTC X Roads (5 km from fort)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 11:00 AM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Avg. Price for Two:</span> ₹700–₹900
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.ixfrQGE9_9qOMDuobjfApQHaJ3?rs=1&pid=ImgDetMain"
+                            alt="The Fisherman’s Wharf" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> The Fisherman’s Wharf</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Banjara Hills (6 km from fort)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00 PM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Avg. Price for Two:</span> ₹800–₹1,000
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP._maCSwU4gwoVnvf_VCaOXQHaJ4?rs=1&pid=ImgDetMain"
+                            alt="Shilparamam Restaurant" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Shilparamam Restaurant</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Madhapur (6 km from fort)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 10:00 AM - 10:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Avg. Price for Two:</span> ₹500–₹700
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/29/8d/c6/paradise-restaurant-in.jpg"
+                            alt="Paradise Restaurant" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Paradise Restaurant</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Secunderabad (8 km from fort)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 11:00 AM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Avg. Price for Two:</span> ₹700–₹1,000
+                    </div>
+                </div>
+            </section>
+
+            <section class="famous-places" id="attractions">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Nearby Attractions</h2>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://myweekendtrips.com/wp-content/uploads/2023/05/Qutub-Shahi-Tombs-Hyderabad1.jpg"
+                            alt="Qutb Shahi Tombs" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-archway"></i> Qutb Shahi Tombs</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 2 km from Golkonda Fort</div>
+                    <p>Royal necropolis with grand mausoleums of Qutb Shahi rulers.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://www.hyderabadtourism.travel/images/places-to-visit/headers/shilparamam-hyderabad-tourism-entry-fee-timings-holidays-reviews-header.jpg"
+                            alt="Shilparamam" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-palette"></i> Shilparamam</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 6 km from Golkonda Fort</div>
+                    <p>Cultural village showcasing arts, crafts, and performances.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/R.923e0d68897445dae606e29c4384e971?rik=b23uPl%2bUPgyyfQ&riu=http%3a%2f%2fhyderabadtourism.co.in%2fwp-content%2fuploads%2f2024%2f06%2fTaramati-Baradari.jpg&ehk=OtnRLUvQjVVaB%2bCBVm4f1DlAMjPDugefo8%2biiU0egIg%3d&risl=&pid=ImgRaw&r=0"
+                            alt="Taramati Baradari" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-archway"></i> Taramati Baradari</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 4 km from Golkonda Fort</div>
+                    <p>Historic pavilion with scenic views and cultural events.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.pND-4MR3Rb0RmW50sSpE4gHaFj?rs=1&pid=ImgDetMain"
+                            alt="Banjara Hills" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-city"></i> Banjara Hills</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 7 km from Golkonda Fort</div>
+                    <p>Upscale area with shopping, dining, and nightlife.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.AhDg2sJkncJCmeTMNiv8JQHaFj?rs=1&pid=ImgDetMain"
+                            alt="Salar Jung Museum" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-museum"></i> Salar Jung Museum</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 9 km from Golkonda Fort</div>
+                    <p>Renowned museum with art, antiques, and artifacts.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="accommodations" id="accommodations">
+            <h2 class="section-title"><i class="fas fa-hotel"></i> Nearby Accommodations</h2>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.SwUlwlpEMNZFCCGS2-tB-wHaEX?rs=1&pid=ImgDetMain"
+                        alt="Hotel NKM’s Grand" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel NKM’s Grand</h3>
+                <div class="distance"><i class="fas fa-car"></i> 4.5 km from Golkonda Fort</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹900–₹1,000 per night</p>
+                <p>Comfortable rooms with modern amenities.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.9WPcSFX6pJvEBnL7gAtNwAHaE8?rs=1&pid=ImgDetMain"
+                        alt="Hotel Green Park" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Green Park</h3>
+                <div class="distance"><i class="fas fa-car"></i> 6 km from Golkonda Fort</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,000 per night</p>
+                <p>Well-located with easy access to Banjara Hills.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.QY4w4zg-guV43XLYmnEYkQHaNL?rs=1&pid=ImgDetMain"
+                        alt="Hotel Shree Kedar" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Shree Kedar</h3>
+                <div class="distance"><i class="fas fa-car"></i> 5 km from Golkonda Fort</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹900–₹1,000 per night</p>
+                <p>Budget-friendly stay with essential amenities.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.oH4RCJ7dldp_vhHU029DDAHaFj?rs=1&pid=ImgDetMain"
+                        alt="Hotel Sai Mirra" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Sai Mirra</h3>
+                <div class="distance"><i class="fas fa-car"></i> 6 km from Golkonda Fort</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹800–₹1,000 per night</p>
+                <p>Convenient for travelers exploring Ameerpet.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.UzTDR279FPD2fo70iYktvwHaEK?rs=1&pid=ImgDetMain">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Rajvihar</h3>
+                <div class="distance"><i class="fas fa-car"></i> 4 km from Golkonda Fort</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹800–₹1,000 per night</p>
+                <p>Close to Mehdipatnam with comfortable stays.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="maps-section" id="map">
+            <h2 class="section-title"><i class="fas fa-location-arrow"></i> How to Reach</h2>
+            <p>Golkonda Fort is located in the western part of Hyderabad. The nearest MMTS station is Mehdipatnam (3 km away).</p>
+            <div class="maps-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.157959463374!2d78.39824331487712!3d17.40481988807356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!Великий4f13.1!3m3!1m2!1s0x3bcb93e4b1c4c4c5%3A0x7a8b7b8b7b7b7b7b!2sGolkonda%20Fort%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1713771892053!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 TravelTrek | The historic fortress of Hyderabad since the 13th century</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-clock"></i> Best time to visit: October to March |
+                <i class="fas fa-rupee-sign"></i> Entry Fee: ₹5 (Indian), ₹100 (Foreigners)
+            </p>
+        </footer>
+    </div>
+    <script>
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelTrek - Durgam Cheruvu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+        :root {
+            --hyderabad-blue: #1a5276;
+            --charminar-gold: #f1c40f;
+            --hyderabad-pink: #e84393;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-image: url('https://images.unsplash.com/photo-1581852057100-9f8a3ccd8b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation Sidebar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5px;
+            z-index: 10;
+            color: whitesmoke;
+        }
+
+        .logo {
+            font-family: var(--ff-rubik-dirt);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            padding: 0 1.2rem;
+            font-weight: 300;
+            color: rgb(254, 252, 252);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            font-family: var(--ff-montserrat);
+            margin: 0px 15px;
+        }
+
+        .nav-links li a {
+            color: white;
+            cursor: pointer;
+        }
+
+        .cir_border {
+            padding: 6px 20px;
+            font-weight: bold;
+            border: 2px hidden whitesmoke;
+            border-radius: 20px;
+            margin: 0px -10px;
+        }
+
+        header {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/bg.png");
+            background-position: bottom;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-content a {
+            letter-spacing: 0.1rem;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-title {
+
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-subcontent {
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-content h2 {
+            font-size: 4vmin;
+        }
+
+        .line {
+            width: 150px;
+            height: 4px;
+            background: #fc036b;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .header-content h1 {
+            font-size: 7vmin;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .ctn {
+            font-family: var(--ff-montserrat);
+            font-size: var(--fs-links-btns);
+            font-weight: 700;
+            padding: 13px 50px;
+            background: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+                    width: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            margin-top: 5%;
+            width: 98%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--hyderabad-blue), var(--text-dark));
+            height: fit-content;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-5px);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--charminar-gold);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hyderabad-badge {
+            display: inline-block;
+            background: var(--hyderabad-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: white;
+        }
+
+        /* Main Image */
+        .main-image-container {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            height: 500px;
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-container:hover {
+            transform: translateY(-5px) rotate(1deg);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image-container:hover .main-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        /* Description Section */
+        .description {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--hyderabad-blue);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .description:hover {
+            transform: translateY(-3px);
+        }
+
+        .description h2 {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description h2 i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        .historical-fact {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--charminar-gold);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Nearby Sections */
+        .nearby-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .restaurants,
+        .famous-places {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurants {
+            border-top: 5px solid var(--hyderabad-pink);
+        }
+
+        .famous-places {
+            border-top: 5px solid var(--charminar-gold);
+        }
+
+        .restaurants:hover {
+            transform: translateY(-5px) translateX(5px);
+        }
+
+        .famous-places:hover {
+            transform: translateY(-5px) translateX(-5px);
+        }
+
+        .section-title {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        /* Restaurant Cards */
+        .restaurant {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--hyderabad-pink);
+        }
+
+        .restaurant:last-child,
+        .place:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .restaurant h3,
+        .place h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant h3 i,
+        .place h3 i {
+            margin-right: 8px;
+            color: var(--hyderabad-pink);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .accommodations {
+            border-top: 5px solid var(--hyderabad-blue);
+        }
+
+        .accommodations:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurants,
+        .famous-places,
+        .accommodations {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-image,
+        .place-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .restaurant:hover .restaurant-image,
+        .place:hover .place-image {
+            transform: scale(1.05);
+        }
+
+        .hyderabadi-badge {
+            background-color: var(--hyderabad-pink);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        .must-try {
+            background-color: #fff9e6;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .timings {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timings i {
+            margin-right: 8px;
+            color: var(--charminar-gold);
+        }
+
+        /* Famous Places */
+        .place {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .place:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .distance {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            margin: 8px 0;
+        }
+
+        .distance i {
+            margin-right: 8px;
+            color: var(--hyderabad-blue);
+        }
+
+        /* Google Maps Section */
+        .maps-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--hyderabad-pink);
+            transition: transform 0.3s ease;
+        }
+
+        .maps-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .maps-container {
+            height: 450px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .nearby-section {
+                flex-direction: column;
+            }
+
+            .main-image-container {
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .image-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition();
+    }'>
+
+    <nav class="navbar glass" style="height: 70px">
+        <span><a href="#home" style="display: flex; align-items: center"><img class="img2" src="./img/mountain.png"
+                    width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo"> TravelTrek</h1>
+            </a></span>
+        <ul class="nav-links">
+            <!-- <li>
+                <a href="index.html#home" id="pri" class="active cir_border">Home</a>
+            </li> -->
+            <li><a href="#description" id="sec" class="cir_border">About</a></li>
+            <li>
+                <a href="#restaurants" id="tri" class="cir_border">Restaurants</a>
+            </li>
+            <li>
+                <a href="#attractions" id="quad" class="cir_border">Attractions</a>
+            </li>
+            <li>
+                <a href="#accommodations" id="quad" class="cir_border">Accommodations</a>
+            </li>
+            <li><a href="#map" id="quint" class="cir_border">Map</a></li>
+            <li>
+                <div>
+                    <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <label for="checkbox" class="label">
+                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-sun-o"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+    <!--navbar-->
+    <!-- <div class="container">
+        <header id="header">
+            <h1 style="text-align: center;"><i class="fas fa-water"></i> Durgam Cheruvu</h1>
+            <p>The serene lake and recreational hub of Hyderabad</p>
+            <div class="hyderabad-badge">
+                <i class="fas fa-map-marker-alt"></i> Madhapur, Hyderabad, Telangana, India
+            </div>
+        </header> -->
+        <div class="container">
+            <header id="header">
+                <div class="header-title">
+                    <h1><i class="fas fa-water"></i> Durgam Cheruvu</h1>
+                </div><br>
+                <div class="header-subcontent">
+                    <p>The serene lake and recreational hub of Hyderabad</p>
+                    <div class="hyderabad-badge">
+                        <i class="fas fa-map-marker-alt"></i> Madhapur, Hyderabad, Telangana, India
+                    </div>
+                </div>
+                </header>
+        <div class="main-image-container">
+            <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                alt="Durgam Cheruvu" class="main-image">
+            <div class="image-overlay">
+                <h2>"The Secret Lake of Hyderabad"</h2>
+                <p>A tranquil retreat amidst the city's tech hub</p>
+            </div>
+        </div>
+
+        <section class="description" id="description">
+            <h2><i class="fas fa-history"></i> About Durgam Cheruvu</h2>
+            <p>Durgam Cheruvu, also known as the "Secret Lake," is a serene freshwater lake located in the heart of Hyderabad's bustling IT corridor. Spanning approximately 63 acres, this hidden gem is surrounded by rocky granite hills, offering a peaceful escape from the urban hustle.</p>
+
+            <div class="historical-fact">
+                The lake is believed to have been constructed during the Qutb Shahi dynasty to serve as a water source for the Golconda Fort. Its name "Durgam" (meaning difficult) refers to its hidden location, which was once hard to access.
+            </div>
+
+            <p>Today, Durgam Cheruvu is a popular spot for locals and tourists alike, offering activities like boating, rock climbing, and nature walks. The lake is also a haven for birdwatchers, with several migratory birds visiting the area seasonally.</p>
+
+            <h3 style="margin-top: 20px; color: var(--hyderabad-blue);"><i class="fas fa-leaf"></i> Key Features</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Boating facilities including pedal boats and water scooters</li>
+                <li>Walking and jogging tracks around the lake</li>
+                <li>Adventure activities like rock climbing and rappelling</li>
+                <li>Amphitheater for cultural events and performances</li>
+            </ul>
+        </section>
+
+        <div class="nearby-section">
+            <section class="restaurants" id="restaurants">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> Budget-Friendly Restaurants</h2>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/R.a12cc392c17bb1d95cf493a9eea9aa88?rik=Xl0fgt6bsxn3Fg&riu=http%3a%2f%2fdahihandi.com.vn%2fwp-content%2fuploads%2f2019%2f12%2fTGT.jpg&ehk=RyyBh7gb5CHpS271qeTr8POOfpRg6zsWHxOKXoFduuo%3d&risl=&pid=ImgRaw&r=0"
+                            alt="Chutneys" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-drumstick-bite"></i> Chutneys <span class="hyderabadi-badge">Vegetarian</span></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jubilee Hills (~4.5 km)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 7:00 AM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> South Indian Thali, Pesarattu, Filter Coffee
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="’image-container">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Spicy Venue" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-pepper-hot"></i> Spicy Venue</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jubilee Hills (~3.5 km)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00 PM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Andhra Meals, Chicken Fry, Guntur Chicken
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Udipi’s Upahar" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-bread-slice"></i> Udipi’s Upahar</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> HITEC City (~3 km)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 7:00 AM - 10:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Masala Dosa, Vada, Upma
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.FAxoHO1R4IrzpH0okH3Y_QHaE-&rs=1&pid=ImgDetMain"
+                            alt="Dosa Place" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Dosa Place</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Madhapur (~2 km)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 8:00 AM - 10:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Rava Dosa, Onion Uthappam, Coconut Chutney
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://tse1.mm.bing.net/th?id=OIP.dvI6KufvD1OudoEH_jjeCQHaE8&rs=1&pid=ImgDetMain"
+                            alt="Eat India Company" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-tint"></i> Eat India Company (Budget Menu)</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jubilee Hills (~3.5 km)</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00 PM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Mini Thali, Kebab Platter, Lassi
+                    </div>
+                </div>
+            </section>
+
+            <section class="famous-places" id="attractions">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Nearby Attractions</h2>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/OIP.YuAWiHWEr57auBuwZkjQDQHaEK?rs=1&pid=ImgDetMain"
+                            alt="Inorbit Mall" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-shopping-bag"></i> Inorbit Mall</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 1 km from Durgam Cheruvu</div>
+                    <p>Famous for shopping, food court, multiplex cinema, and branded stores, making it a vibrant urban hangout spot.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1588580000645-4562d08e94ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Shilparamam Cultural Village" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-paint-brush"></i> Shilparamam Cultural Village</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 2 km from Durgam Cheruvu</div>
+                    <p>A cultural hub showcasing traditional crafts, cultural performances, and art exhibitions, reflecting India’s heritage.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://hyderabad.stpi.in/sites/default/files/incubation-services-images/hitechcity.jpg"
+                            alt="Cyber Towers" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-building"></i> Cyber Towers</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 3 km from Durgam Cheruvu</div>
+                    <p>A landmark IT hub symbolizing Hyderabad's growth as a global technology center.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://www.bestbus.in/assets/images/tourist-attractions/botanical-gardenshyderabad.jpg"
+                            alt="Botanical Gardens" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-leaf"></i> Botanical Gardens</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 4.5 km from Durgam Cheruvu</div>
+                    <p>A serene spot with green trails, diverse flora, and peaceful nature walks, perfect for relaxation.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://th.bing.com/th/id/R.0a5a03264b01bc0a8677fba537d86a2b?rik=qsRAAg2nLdioSw&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ZTI1fwKM-_4%2fUDx9c70MVQI%2fAAAAAAAAE0k%2fnvNSkhTe2yM%2fs1600%2fBasking%2bIT%2bGlory%2bRaheja%2bMindspace%2c%2bCyberabad.jpg&ehk=YqT90cuE3ghHpx1OnZqPdnIQVswIYr%2f%2fidyeKbi4Ju0%3d&risl=&pid=ImgRaw&r=0"
+                            alt="Mindspace IT Park" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-city"></i> Mindspace IT Park</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 2.5 km from Durgam Cheruvu</div>
+                    <p>A modern business district known for its sleek architecture and vibrant corporate environment.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="accommodations" id="accommodations">
+            <h2 class="section-title"><i class="fas fa-hotel"></i> Affordable Accommodations</h2>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.9w6JQ1y886BR47LGNXXq8AHaFj&rs=1&pid=ImgDetMain"
+                        alt="Hotel Rajdhani Residency" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Rajdhani Residency</h3>
+                <div class="distance"><i class="fas fa-car"></i> 2 km from Durgam Cheruvu</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹900 - ₹1,000 per night</p>
+                <p>Budget-friendly hotel with basic rooms, Wi-Fi, and AC, located near Shilparamam.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity"><i class="fas fa-snowflake"></i> AC</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.b1gmi0TKr85axTifiviURAHaEo&rs=1&pid=ImgDetMain"
+                        alt="Hotel Rainbow International Madhapur" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Rainbow International Madhapur</h3>
+                <div class="distance"><i class="fas fa-car"></i> 3 km from Durgam Cheruvu</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹850 - ₹1,000 per night</p>
+                <p>Affordable stay with neat rooms and essential amenities, ideal for budget travelers.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity"><i class="fas fa-bed"></i> Comfortable Beds</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://newprojects.99acres.com/projects/sri_rama_developers/sri_rama_residency/images/2.jpeg"
+                        alt="Sri Rama Residency" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Sri Rama Residency</h3>
+                <div class="distance"><i class="fas fa-car"></i> 2.5 km from Durgam Cheruvu</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹800 - ₹950 per night</p>
+                <p>Budget-friendly option perfect for short stays, with clean rooms and basic facilities.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Parking</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/R.5aec9a26f04d1b6e592b2b1788fe1607?rik=GHepBCChlOHXzg&riu=http%3a%2f%2fdimg04.c-ctrip.com%2fimages%2f0224h120008tj7q0q595F_W_390_390_R5.jpg&ehk=ODZx04KHa5zyTj0ViMHAS2IO1sRy9p5dtUapG0pCMfA%3d&risl=&pid=ImgRaw&r=0"
+                        alt="Hotel Sree Balaji Residency" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Sree Balaji Residency</h3>
+                <div class="distance"><i class="fas fa-walking"></i> 1.8 km from Durgam Cheruvu</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹900 - ₹1,000 per night</p>
+                <p>Clean and affordable rooms, walkable to Inorbit Mall, ideal for budget travelers.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity"><i class="fas fa-snowflake"></i> AC</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.95nbfBPcs50Yp0jRVMmcvQHaEK&rs=1&pid=ImgDetMain"
+                        alt="Hotel Fortune Residency" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Fortune Residency</h3>
+                <div class="distance"><i class="fas fa-car"></i> 4.5 km from Durgam Cheruvu</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹900 - ₹1,000 per night</p>
+                <p>Value-for-money stay with basic comforts, located near the Botanical Garden.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Parking</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="maps-section" id="map">
+            <h2 class="section-title"><i class="fas fa-location-arrow"></i> How to Reach</h2>
+            <p>Durgam Cheruvu is located in Hyderabad's IT hub, easily accessible via Madhapur and HITEC City. The nearest metro station is Durgam Cheruvu Metro Station (~1 km away).</p>
+            <div class="maps-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6555410872917!2d78.38982431535547!3d17.429453988039773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e4f7d8f7b7%3A0x8e7f9b3f7d8e7f9b!2sNehru%20Zoological%20Park!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Durgam Cheruvu Explorer | Hyderabad's serene retreat</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-clock"></i> Best time to visit: October to March |
+                <i class="fas fa-rupee-sign"></i> Entry Fee: Free
+            </p>
+        </footer>
+    </div>
+    <script>
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelTrek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+        :root {
+            --hyderabad-blue: #1a5276;
+            --charminar-gold: #f1c40f;
+            --hyderabad-pink: #e84393;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-image: url('https://images.unsplash.com/photo-1581852057100-9f8a3ccd8b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation Sidebar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5px;
+            z-index: 10;
+            color: whitesmoke;
+        }
+
+        .logo {
+            font-family: var(--ff-rubik-dirt);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            padding: 0 1.2rem;
+            font-weight: 300;
+            color: rgb(254, 252, 252);
+
+
+        }
+
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            font-family: var(--ff-montserrat);
+            margin: 0px 15px;
+        }
+
+        .nav-links li a {
+            color: white;
+            cursor: pointer;
+        }
+
+        .cir_border {
+            padding: 6px 20px;
+            font-weight: bold;
+            border: 2px hidden whitesmoke;
+            border-radius: 20px;
+            margin: 0px -10px;
+        }
+
+        header {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/bg.png");
+            /* background-image: url("bgvid.mp4"); */
+            background-position: bottom;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-content a {
+            letter-spacing: 0.1rem;
+        }
+
+        .header-content h2 {
+            font-size: 4vmin;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-title {
+
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-subcontent {
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+
+        .line {
+            width: 150px;
+            height: 4px;
+            background: #fc036b;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .header-content h1 {
+            font-size: 7vmin;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .ctn {
+            font-family: var(--ff-montserrat);
+            font-size: var(--fs-links-btns);
+            font-weight: 700;
+            padding: 13px 50px;
+            background: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            margin-top: 5%;
+            width: 98%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--hyderabad-blue), var(--text-dark));
+            height: fit-content;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-5px);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--charminar-gold);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hyderabad-badge {
+            display: inline-block;
+            background: var(--hyderabad-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: white;
+        }
+
+        /* Main Image */
+        .main-image-container {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            height: 500px;
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-container:hover {
+            transform: translateY(-5px) rotate(1deg);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image-container:hover .main-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        /* Description Section */
+        .description {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--hyderabad-blue);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .description:hover {
+            transform: translateY(-3px);
+        }
+
+        .description h2 {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description h2 i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        .historical-fact {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--charminar-gold);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Nearby Sections */
+        .nearby-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .restaurants,
+        .famous-places {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurants {
+            border-top: 5px solid var(--hyderabad-pink);
+        }
+
+        .famous-places {
+            border-top: 5px solid var(--charminar-gold);
+        }
+
+        .restaurants:hover {
+            transform: translateY(-5px) translateX(5px);
+        }
+
+        .famous-places:hover {
+            transform: translateY(-5px) translateX(-5px);
+        }
+
+        .section-title {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        /* Restaurant Cards */
+        .restaurant {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--hyderabad-pink);
+        }
+
+        .restaurant:last-child,
+        .place:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .restaurant h3,
+        .place h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant h3 i,
+        .place h3 i {
+            margin-right: 8px;
+            color: var(--hyderabad-pink);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .accommodations {
+            border-top: 5px solid var(--hyderabad-blue);
+        }
+
+        .accommodations:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurants,
+        .famous-places,
+        .accommodations {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-image,
+        .place-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .restaurant:hover .restaurant-image,
+        .place:hover .place-image {
+            transform: scale(1.05);
+        }
+
+        .hyderabadi-badge {
+            background-color: var(--hyderabad-pink);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        .must-try {
+            background-color: #fff9e6;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .timings {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timings i {
+            margin-right: 8px;
+            color: var(--charminar-gold);
+        }
+
+        /* Famous Places */
+        .place {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .place:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--charminar-gold);
+        }
+
+        .distance {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            margin: 8px 0;
+        }
+
+        .distance i {
+            margin-right: 8px;
+            color: var(--hyderabad-blue);
+        }
+
+        /* Google Maps Section */
+        .maps-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--hyderabad-pink);
+            transition: transform 0.3s ease;
+        }
+
+        .maps-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .maps-container {
+            height: 450px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .nearby-section {
+                flex-direction: column;
+            }
+
+            .main-image-container {
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .image-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition();
+    }'>
+
+    <nav class="navbar glass" style="height: 70px">
+        <span><a href="#home" style="display: flex; align-items: center"><img class="img2" src="./img/mountain.png"
+                    width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo">&nbsp;TravelTrek</h1>
+            </a></span>
+        <ul class="nav-links">
+            <!-- <li>
+                <a href="index.html#home" id="pri" class="active cir_border">Home</a>
+            </li> -->
+            <li><a href="#description" id="sec" class="cir_border">About</a></li>
+            <li>
+                <a href="#restaurants" id="tri" class="cir_border">Restaurants</a>
+            </li>
+            <li>
+                <a href="#attractions" id="quad" class="cir_border">Attractions</a>
+            </li>
+            <li>
+                <a href="#accommodations" id="quad" class="cir_border">Accommodations</a>
+            </li>
+            <li><a href="#map" id="quint" class="cir_border">Map</a></li>
+
+            <li>
+                <div>
+                    <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <label for="checkbox" class="label">
+                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-sun-o"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+    <!--navbar-->
+    <!-- <div class="container">
+        <header id="header">
+            <h1 style="text-align: center;"><i class="fas fa-monument"></i> Charminar</h1>
+            <p>The iconic monument and beating heart of Hyderabad</p>
+            <div class="hyderabad-badge">
+                <i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India
+            </div>
+        </header> -->
+        <div class="container">
+            <header id="header">
+                <div class="header-title">
+                    <h1><i class="fas fa-monument"></i> Charminar</h1>
+                </div><br>
+                <div class="header-subcontent">
+                    <p>The iconic monument and beating heart of Hyderabad</p>
+                    <div class="hyderabad-badge">
+                        <i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India
+                    </div>
+                </div>
+                </header>
+        <div class="main-image-container">
+            <img src="https://www.shutterstock.com/image-photo/hyderabadindia-december-16-charminar-hyderabad-600nw-555387298.jpg"
+                alt="Charminar" class="main-image">
+            <div class="image-overlay">
+                <h2>"The Arc de Triomphe of the East"</h2>
+                <p>Built in 1591 by Muhammad Quli Qutb Shah</p>
+            </div>
+        </div>
+            </header>
+        <section class="description" id="description">
+            <h2><i class="fas fa-history"></i> Historical Significance</h2>
+            <p>Charminar, meaning "Four Towers", is a magnificent square edifice built with granite and lime mortar.
+                This grand architectural marvel stands at the intersection of the historical trade route that connects
+                the markets of Golconda with the port city of Machilipatnam.</p>
+
+            <div class="historical-fact">
+                The monument was built to commemorate the eradication of plague from Hyderabad. Each of the four arches
+                faces a fundamental point and opens into four streets that once led to the royal courts.
+            </div>
+
+            <p>The structure is a perfect square, measuring 20 meters on each side, with four grand arches facing the
+                cardinal directions. Each minaret soars 56 meters into the Hyderabad skyline and contains a spiral
+                staircase with 149 steps leading to the upper floor.</p>
+
+            <h3 style="margin-top: 20px; color: var(--hyderabad-blue);"><i class="fas fa-archway"></i> Architectural
+                Features</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Indo-Islamic architecture with Persian influences</li>
+                <li>Four minarets with intricate carvings</li>
+                <li>Double gallery at the top offering panoramic views</li>
+                <li>Mosque on the top floor - one of the oldest in Hyderabad</li>
+            </ul>
+        </section>
+
+        <div class="nearby-section">
+            <section class="restaurants" id="restaurants">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> Must-Try Hyderabadi Cuisine</h2>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Paradise Biryani" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-drumstick-bite"></i> Paradise Biryani <span
+                            class="hyderabadi-badge">Iconic</span></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Opposite Charminar Bus Stop</p>
+                    <p class="timings"><i class="far fa-clock"></i> 11:00 AM - 11:30 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Hyderabadi Dum Biryani, Mirchi Ka Salan, Double Ka Meetha
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Nimrah Café" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-mug-hot"></i> Nimrah Café & Bakery</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Charminar, Bank Street</p>
+                    <p class="timings"><i class="far fa-clock"></i> 5:00 AM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Irani Chai, Osmania Biscuits, Kheema Samosa
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Pista House Haleem" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-ice-cream"></i> Pista House Haleem</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Charminar, Naya Pul</p>
+                    <p class="timings"><i class="far fa-clock"></i> Seasonal (Ramadan Special)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Hyderabadi Haleem, Shahi Tukda, Falooda
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoH2eZ5Eohj5zc8rbwcLDkOY66pKi5rQu7nQ&s"
+                            alt="Shah Ghouse Café" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Shah Ghouse Café</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Charminar, Madina Circle</p>
+                    <p class="timings"><i class="far fa-clock"></i> 5:00 AM - 12:00 AM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Mutton Kheema, Chicken 65, Badam Milk
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://b.zmtcdn.com/data/pictures/0/92020/f7b6a9e4cb7676fb7e8e320d8289be74.jpg?output-format=webp&fit=around|300:273&crop=300:273;,"
+                            alt="Grand Hotel" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-hotel"></i> Grand Hotel - Kebabs & Curries</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Abids, 2 km from Charminar</p>
+                    <p class="timings"><i class="far fa-clock"></i> 11:00 AM - 11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> Boti Kebabs, Mutton Dalcha, Hyderabadi Bagara Rice
+                    </div>
+                </div>
+            </section>
+
+            <section class="famous-places" id="attractions">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Nearby Attractions</h2>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://i0.wp.com/pixahive.com/wp-content/uploads/2020/09/Laad-Bazar-in-Hyderabad-93828-pixahive.jpg?fit=2560%2C1440&ssl=1"
+                            alt="Laad Bazaar" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-shopping-bag"></i> Laad Bazaar</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 2 min walk from Charminar</div>
+                    <p>Famous for exquisite bangles, pearls, and traditional Hyderabadi attire. The market's colorful
+                        lanes are lined with shops selling lacquer bangles since the Qutb Shahi era.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://mrwallpaper.com/images/hd/makkah-hd-madina-masjid-6h6mzikvd5vqvknq.jpg"
+                            alt="Mecca Masjid" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-university"></i> Mecca Masjid</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 5 min walk from Charminar</div>
+                    <p>One of India's largest mosques that can accommodate 10,000 worshippers. Built with bricks made
+                        from soil brought from Mecca, hence the name.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://images.alphacoders.com/659/659470.jpg" alt="Chowmahalla Palace"
+                            class="place-image">
+                    </div>
+                    <h3><i class="fas fa-chess-rook"></i> Chowmahalla Palace</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 10 min drive from Charminar</div>
+                    <p>The official residence of Nizams of Hyderabad, showcasing the splendor of their rule. The palace
+                        complex consists of four palaces in a unique architectural style.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://thumbs.dreamstime.com/b/front-city-museum-india-salar-jung-art-hyderabad-86233668.jpg?w=768"
+                            alt="Salar Jung Museum" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-museum"></i> Salar Jung Museum</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 15 min drive from Charminar</div>
+                    <p>One of the three National Museums of India, housing the art collection of the Salar Jung family
+                        with over 1.1 million artifacts from around the world.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1470075446540-4391a96ec621?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sY29uZGElMjBmb3J0fGVufDB8fDB8fHww"
+                            alt="Golconda Fort" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-fort-awesome"></i> Golconda Fort</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 30 min drive from Charminar</div>
+                    <p>The historic fort known for its acoustic architecture and as the source of the world-famous
+                        Koh-i-Noor and Hope diamonds. The sound and light show is a must-see.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="accommodations" id="accommodations">
+            <h2 class="section-title"><i class="fas fa-hotel"></i> Nearby Accommodations</h2>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://pix10.agoda.net/hotelImages/19118167/-1/0100c51661cc9c10329187d1465706f9.jpg?ca=15&ce=1&s=450x450"
+                        alt="Vrindhavan Confort Inn" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Vrindhavan Comfort Inn</h3>
+                <div class="distance"><i class="fas fa-car"></i> 1 km from Charminar</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,080 - ₹1,500 per night</p>
+                <p>Vrindavan Comfort Inn is a budget-friendly hotel offering essential amenities for travelers seeking affordability and convenience.​</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-snowflake"></i> Ac service</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://img4.nbstatic.in/tr:w-500/57a955c14cedfd000d652d60.jpg"
+                        alt="The Golkonda Hotel" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> The Golkonda Hotel</h3>
+                <div class="distance"><i class="fas fa-car"></i> 3 km from Charminar</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹4,500 - ₹12,000 per night</p>
+                <p>Luxury business hotel with excellent service and authentic Hyderabadi hospitality.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-swimming-pool"></i> Pool</span>
+                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.a_KeqgiDivPZwkWYVspOcQHaHa&rs=1&pid=ImgDetMain"
+                        alt="Hotel Shadab" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Shadab</h3>
+                <div class="distance"><i class="fas fa-walking"></i> 10 min walk from Charminar</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,500 - ₹3,500 per night</p>
+                <p>Budget-friendly hotel famous for its in-house restaurant serving authentic Hyderabadi cuisine.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Parking</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.4HunKAntrcpkzuzud74mbQHaLH&rs=1&pid=ImgDetMain"
+                        alt="Minerva Grand" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Minerva Grand</h3>
+                <div class="distance"><i class="fas fa-car"></i> 2 km from Charminar</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹2,800 - ₹6,500 per night</p>
+                <p>Comfortable mid-range hotel with modern amenities and good connectivity to tourist spots.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
+                    <span class="amenity"><i class="fas fa-concierge-bell"></i> Room Service</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/416713668.jpg?k=bc7599ef29b4cdb80e0be5d1d9cc7696e0fb8c0a3ac18886b7baa6e2f28bf324&o=&hp=1"
+                        alt="Hotel Shree Grand" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Hotel Shree Grand</h3>
+                <div class="distance"><i class="fas fa-walking"></i> 15 min walk from Charminar</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,200 - ₹2,800 per night</p>
+                <p>Economy hotel with clean rooms and basic amenities, perfect for budget travelers.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Parking</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+        </section>
+        <section class="maps-section" id="map">
+            <h2 class="section-title"><i class="fas fa-location-arrow"></i> How to Reach</h2>
+            <p>Charminar is located in the heart of Hyderabad's old city. The nearest MMTS station is Yakutpura (4 km
+                away).</p>
+            <div class="maps-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.258418389145!2d78.4746554153555!3d17.36160648804477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb978a6e1a939b%3A0xcb5a69e4aaf113fb!2sCharminar!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2023 Charminar Explorer | The soul of Hyderabad since 1591</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-clock"></i> Best time to visit: October to February |
+                <i class="fas fa-rupee-sign"></i> Entry Fee: ₹25 for Indians, ₹300 for foreigners
+            </p>
+        </footer>
+    </div>
+    <script>
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>

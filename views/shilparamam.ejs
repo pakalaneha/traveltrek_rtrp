@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelTrek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+        :root {
+            --hyderabad-blue: #1a5276;
+            --charminar-gold: #f1c40f;
+            --hyderabad-pink: #e84393;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-image: url('https://images.unsplash.com/photo-1581852057100-9f8a3ccd8b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation Sidebar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5px;
+            z-index: 10;
+            color: whitesmoke;
+        }
+
+        .logo {
+            font-family: var(--ff-rubik-dirt);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            padding: 0 1.2rem;
+            font-weight: 300;
+            color: rgb(254, 252, 252);
+
+
+        }
+
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            font-family: var(--ff-montserrat);
+            margin: 0px 15px;
+        }
+
+        .nav-links li a {
+            color: white;
+            cursor: pointer;
+        }
+
+        .cir_border {
+            padding: 6px 20px;
+            font-weight: bold;
+            border: 2px hidden whitesmoke;
+            border-radius: 20px;
+            margin: 0px -10px;
+        }
+
+        header {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/bg.png");
+            /* background-image: url("bgvid.mp4"); */
+            background-position: bottom;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+        .header-content {
+            font-family: var(--ff-lora);
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-title {
+
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-subcontent {
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .header-content a {
+            letter-spacing: 0.1rem;
+        }
+
+        .header-content h2 {
+            font-size: 4vmin;
+        }
+
+        .line {
+            width: 150px;
+            height: 4px;
+            background: #fc036b;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .header-content h1 {
+            font-size: 7vmin;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .ctn {
+            font-family: var(--ff-montserrat);
+            font-size: var(--fs-links-btns);
+            font-weight: 700;
+            padding: 13px 50px;
+            background: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            margin-top: 5%;
+            width: 98%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--hyderabad-blue), var(--text-dark));
+            height: fit-content;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-5px);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--shiparamam-gold);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hyderabad-badge {
+            display: inline-block;
+            background: var(--hyderabad-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: white;
+        }
+
+        /* Main Image */
+        .main-image-container {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            height: 500px;
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-container:hover {
+            transform: translateY(-5px) rotate(1deg);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image-container:hover .main-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        /* Description Section */
+        .description {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--hyderabad-blue);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .description:hover {
+            transform: translateY(-3px);
+        }
+
+        .description h2 {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description h2 i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        .historical-fact {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--shilparamam-gold);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Nearby Sections */
+        .nearby-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .restaurants,
+        .famous-places {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurants {
+            border-top: 5px solid var(--hyderabad-pink);
+        }
+
+        .famous-places {
+            border-top: 5px solid var(--shilparamam-gold);
+        }
+
+        .restaurants:hover {
+            transform: translateY(-5px) translateX(5px);
+        }
+
+        .famous-places:hover {
+            transform: translateY(-5px) translateX(-5px);
+        }
+
+        .section-title {
+            color: var(--hyderabad-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--hyderabad-pink);
+        }
+
+        /* Restaurant Cards */
+        .restaurant {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--hyderabad-pink);
+        }
+
+        .restaurant:last-child,
+        .place:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .restaurant h3,
+        .place h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant h3 i,
+        .place h3 i {
+            margin-right: 8px;
+            color: var(--hyderabad-pink);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .accommodations {
+            border-top: 5px solid var(--hyderabad-blue);
+        }
+
+        .accommodations:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurants,
+        .famous-places,
+        .accommodations {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-image,
+        .place-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .restaurant:hover .restaurant-image,
+        .place:hover .place-image {
+            transform: scale(1.05);
+        }
+
+        .hyderabadi-badge {
+            background-color: var(--hyderabad-pink);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        .must-try {
+            background-color: #fff9e6;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid var(--shilparamam-gold);
+        }
+
+        .timings {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timings i {
+            margin-right: 8px;
+            color: var(--shilparamam-gold);
+        }
+
+        /* Famous Places */
+        .place {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .place:hover {
+            transform: translateY(-3px);
+            padding-left: 10px;
+            border-left: 3px solid var(--shilparamam-gold);
+        }
+
+        .distance {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            margin: 8px 0;
+        }
+
+        .distance i {
+            margin-right: 8px;
+            color: var(--hyderabad-blue);
+        }
+
+        /* Google Maps Section */
+        .maps-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--hyderabad-pink);
+            transition: transform 0.3s ease;
+        }
+
+        .maps-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .maps-container {
+            height: 450px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .nearby-section {
+                flex-direction: column;
+            }
+
+            .main-image-container {
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .image-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition();
+    }'>
+
+    <nav class="navbar glass" style="height: 70px">
+        <span><a href="#home" style="display: flex; align-items: center"><img class="img2" src="./img/mountain.png"
+                    width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo">&nbsp;TravelTrek</h1>
+            </a></span>
+        <ul class="nav-links">
+            <!-- <li>
+                <a href="index.html#home" id="pri" class="active cir_border">Home</a>
+            </li> -->
+            <li><a href="#description" id="sec" class="cir_border">About</a></li>
+            <li>
+                <a href="#restaurants" id="tri" class="cir_border">Restaurants</a>
+            </li>
+            <li>
+                <a href="#attractions" id="quad" class="cir_border">Attractions</a>
+            </li>
+            <li>
+                <a href="#accommodations" id="quad" class="cir_border">Accommodations</a>
+            </li>
+            <li><a href="#map" id="quint" class="cir_border">Map</a></li>
+
+            <li>
+                <div>
+                    <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <label for="checkbox" class="label">
+                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-sun-o"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+    <!--navbar-->
+    <!-- <div class="container">
+        <header id="header">
+            <h1 style="text-align: center;"><i class="fas fa-monument"></i> Shilparamam</h1>
+            <p>Shilparamam in Hyderabad is significant as a dedicated arts and crafts</p>
+            <div class="hyderabad-badge">
+                <i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India
+            </div>
+        </header> -->
+        <div class="container">
+            <header id="header">
+                <div class="header-title">
+                    <h1><i class="fas fa-monument"></i> Shilparamam</h1>
+                </div><br>
+                <div class="header-subcontent">
+                    <p>Shilparamam in Hyderabad is significant as a dedicated arts and crafts</p>
+                    <div class="hyderabad-badge">
+                        <i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India
+                    </div>
+                </div>
+                </header>
+        <div class="main-image-container">
+            <img src="C:\Users\archa\Downloads\shilparamam.jpg"
+                alt="Shilparamam" class="main-image">
+            <div class="image-overlay">
+                <p>conceived in the year 1992</p>
+            </div>
+        </div>
+
+        <section class="description" id="description">
+            <h2><i class="fas fa-history"></i> Historical Significance</h2>
+            <p>Shilparamam in Hyderabad is significant as a dedicated arts and crafts village established to promote and preserve Indian cultural heritage. 
+                It serves as a platform for artisans and performing artists to showcase their talents, fostering a connection between traditional crafts and modern life.
+                 The village provides a space for visitors to experience the diversity of Indian culture, from art and crafts to ethnic festivals. </p>
+                 <br/>
+
+            <h4>Establishment:</h4>
+            <p>Shilparamam was conceived in 1992 as a crafts village to preserve and promote traditional Indian crafts. </p>
+            <h4>Purpose:</h4>
+            <p>The village aims to provide a platform for artisans to exhibit their work, encourage cultural integration, and showcase the country's rich heritage. </p>
+            <h4>Government Support:</h4>
+            <p>The state government established this platform to support and promote Indian arts and crafts. </p>
+
+            <h3 style="margin-top: 20px; color: var(--hyderabad-blue);"><i class="fas fa-archway"></i> Significance</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Shilparamam serves as a living museum, exhibiting the diversity of Indian crafts and traditions.</li>
+                <li>It provides a space for artisans to showcase their skills,contributing to the economic well-being of traditional craft communities. </li>
+                <li>Shilparamam attracts visitors interested in experiencing Indian culture, with events like the All-India Festival of Arts and Crafts held annually</li>
+                <li>Shilparamam fosters a sense of community and belonging among artists and visitors, promoting cultural exchange and understanding. </li>
+            </ul>
+        </section>
+
+        <div class="nearby-section">
+            <section class="restaurants" id="restaurants">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> Must-Try Hyderabadi Cuisine</h2>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Naaz Mandi" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-drumstick-bite"></i> Naaz Mandi<span
+                            class="hyderabadi-badge">Iconic</span></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Shilparamam,Hitech City</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00 AM - 12:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>Must Try:</span>Relaxed restaurant spotlighting fish, meat & vegetarian rice plates, plus kebabs & appetizers.
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Oh! Calcutta" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-mug-hot"></i>Oh! Calcutta</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Shilparamam, Hitech City</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00-3.30 PM, 7:00-11:00 PM (Daily)</p>
+                    <div class="must-try">
+                        <span>signature dish:</span> Smoked Hilsa, which is a tribute to the prized jewel of Bengali cuisine."
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Exotica Hitech City" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-ice-cream"></i> Exotica Hitech City</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Shilparamam, Hitech City</p>
+                    <p class="timings"><i class="far fa-clock"></i> 12:00-3:30 PM,7:00-11:00 PM</p>
+                    <div class="must-try">
+                        <span>Must Try:</span>Rooftop restaurant, bar, private dining, open to sky lounge, indoor and outdoor seating serving the best of North Indian cuisine and complimented with oriental favourites… Introducing Mediterranean shortly…"
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoH2eZ5Eohj5zc8rbwcLDkOY66pKi5rQu7nQ&s"
+                            alt="Mehfil Restaurant" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-utensils"></i> Mehfil Restaurant</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Near Shilparamam,Hitech City Main Road</p>
+                    <p class="timings"><i class="far fa-clock"></i> 10:30 AM - 12:30 PM</p>
+                    <div class="must-try">
+                        <span>Must Try:</span>  Hyderabadi Chicken Jumbo Pack, various kebabs, and dum biryani
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="image-container">
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.eazydiner.com%2Fhyderabad%2Fmathru-sri-tiffins-hitech-city-hyderabad-649124%2Fmenu&psig=AOvVaw2eCn-XourfDMjxuNSFAXBr&ust=1745463611661000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjMwuaU7YwDFQAAAAAdAAAAABAE"
+                            alt="Mathru Sri Tiffins" class="restaurant-image">
+                    </div>
+                    <h3><i class="fas fa-hotel"></i> Mathru Sri Tiffins</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> near shilparamam,Hitech City</p>
+                    <p class="timings"><i class="far fa-clock"></i>7:00 AM - 10:00 PM</p>
+                    <div class="must-try">
+                        <span>Must Try:</span> different opinions of south Indian tiffins available here with different types
+                    </div>
+                </div>
+            </section>
+
+            <section class="famous-places" id="attractions">
+                <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Nearby Attractions</h2>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgvr-travels.com%2Fproduct%2Fhyderabad-city-seeing-package-ramoji-film-city-option-2%2F&psig=AOvVaw1hTv9pr47nKyUmIBj139UV&ust=1745430489538000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNC_3bqZ7IwDFQAAAAAdAAAAABAJ"
+                            alt="Chilkur Balaji" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-shopping-bag"></i> Chilkur Balaji</h3>
+                    <div class="distance"><i class="fas fa-walking"></i> 38 min drive from shilparamam</div>
+                    <p>its belief that it can grant the wishes of those seeking visas</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://images.alphacoders.com/659/659470.jpg" alt="Chowmahalla Palace"
+                            class="place-image">
+                    </div>
+                    <h3><i class="fas fa-chess-rook"></i> Chowmahalla Palace</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 40 min drive from Shilparamam</div>
+                    <p>The official residence of Nizams of Hyderabad, showcasing the splendor of their rule. The palace
+                        complex consists of four palaces in a unique architectural style.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://thumbs.dreamstime.com/b/front-city-museum-india-salar-jung-art-hyderabad-86233668.jpg?w=768"
+                            alt="Salar Jung Museum" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-museum"></i> Salar Jung Museum</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 37 min drive from Shilparamam</div>
+                    <p>One of the three National Museums of India, housing the art collection of the Salar Jung family
+                        with over 1.1 million artifacts from around the world.</p>
+                </div>
+
+                <div class="place">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1470075446540-4391a96ec621?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sY29uZGElMjBmb3J0fGVufDB8fDB8fHww"
+                            alt="Golconda Fort" class="place-image">
+                    </div>
+                    <h3><i class="fas fa-fort-awesome"></i> Golconda Fort</h3>
+                    <div class="distance"><i class="fas fa-car"></i> 20 min drive from Shilparamam</div>
+                    <p>The historic fort known for its acoustic architecture and as the source of the world-famous
+                        Koh-i-Noor and Hope diamonds. The sound and light show is a must-see.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="accommodations" id="accommodations">
+            <h2 class="section-title"><i class="fas fa-hotel"></i> Nearby Accommodations</h2>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Super Townhouse Hotel" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Super Townhouse Hotel</h3>
+                <div class="distance"><i class="fas fa-car"></i> 10 min from Shilparamam</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,380 per night</p>
+                <p>It's a popular choice for travelers seeking comfortable and affordable accommodations</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-Media"></i>Flat-screen TV</span>
+                    <span class="amenity"><i class="fas fa-utensils"></i> Fine Di</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Blossoms Room Hotel Abhi Residency" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Blossoms Room Hotel Abhi Residency</h3>
+                <div class="distance"><i class="fas fa-car"></i> 5 min from Shilparamam</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,500 - ₹3,000 per night</p>
+                <p>Luxury business hotel with excellent service and authentic Hyderabadi hospitality.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-Parking"></i> Private Parking</span>
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1582719471380-cd7775af7d6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Gayathri Heights " class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Gayathri Heights </h3>
+                <div class="distance"><i class="fas fa-walking"></i> 10 min  from Shilparamam</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹1,800 - ₹6,000 per night</p>
+                <p>Budget-friendly hotel famous for its in-house restaurant serving authentic Hyderabadi cuisine.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Parking</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="PGR Guest Inn" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> PGR Guest Inn</h3>
+                <div class="distance"><i class="fas fa-car"></i> 9 km from Shilparamam</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹2,100 - ₹2,500 per night</p>
+                <p>Comfortable mid-range hotel with good connectivity to tourist spots.</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                    <span class="amenity"><i class="fas fa-parking"></i> Free Parking</span>
+                    <span class="amenity"><i class="fas fa-Media"></i> lat-screen TV</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                </div>
+            </div>
+
+            <div class="place">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Avasa Hotel" class="hotel-image">
+                </div>
+                <h3><i class="fas fa-building"></i> Avasa Hotel</h3>
+                <div class="distance"><i class="fas fa-walking"></i> 9 min from Shilparamam</div>
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price-range"><i class="fas fa-tag"></i> ₹18,000 - ₹30,000 per night</p>
+                <p>The 12 Storey Building Hotel Avasa is a modern 5-star property offering luxurious accommodation in Hyderabad</p>
+                <div class="amenities">
+                    <span class="amenity"><i class="fas fa- swimming pool"></i> pool</span>
+                    <span class="amenity"><i class="fas fa-spa"></i> spa</span>
+                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
+                    <span class="amenity"><i class="fas fa-wifi"></i> free wifi</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="maps-section" id="map">
+            <h2 class="section-title"><i class="fas fa-location-arrow"></i> How to Reach</h2>
+            <p>Shilparamam is located in Madhapur,Hyderabad</p>
+            <div class="maps-container">
+                <iframe
+                    src="https://www.google.com/maps/place/Shilparamam+Art+%26+Craft+Village/@17.4529875,78.3784996,19z/data=!4m6!3m5!1s0x3bcb93dbf996589d:0xd5b5d3b90d993301!8m2!3d17.452573!4d78.3783065!16s%2Fm%2F03cjgfz?entry=ttu&g_ep=EgoyMDI1MDQyMC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2023 Charminar Explorer | The soul of Hyderabad since 1591</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-rupee-sign"></i> Entry Fee: ₹60 for adults and ₹20 for children
+            </p>
+        </footer>
+    </div>
+    <script>
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>

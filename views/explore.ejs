@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelTrek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --hyderabad-blue: #1a5276;
+            --charminar-gold: #f1c40f;
+            --hyderabad-pink: #e84393;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-color: #f8f9fa;
+            --card-bg: white;
+            --text-color: #333;
+            --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --footer-bg: #2c3e50;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f0f0f0;
+            --header-bg: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+            --footer-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.7;
+            background-color: var(--bg-color);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Sidebar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5px;
+            z-index: 10;
+            color: whitesmoke;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            padding: 0 1.2rem;
+            font-weight: 300;
+            color: rgb(254, 252, 252);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0px 15px;
+        }
+
+        .nav-links li a {
+            color: white;
+            cursor: pointer;
+        }
+
+        .cir_border {
+            padding: 6px 20px;
+            font-weight: bold;
+            border: 2px hidden whitesmoke;
+            border-radius: 20px;
+            margin: 0px -10px;
+        }
+
+        header {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../img/bg.png");
+            background-position: bottom;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .header-content {
+            letter-spacing: 0.5rem;
+            color: whitesmoke;
+            text-align: center;
+            z-index: 1;
+            padding: 4rem;
+            margin-bottom: 150px;
+        }
+
+        .header-content a {
+            letter-spacing: 0.1rem;
+        }
+
+        .header-content h2 {
+            font-size: 4vmin;
+        }
+
+        .line {
+            width: 150px;
+            height: 4px;
+            background: #fc036b;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .header-content h1 {
+            font-size: 7vmin;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .ctn {
+            font-weight: 700;
+            padding: 13px 50px;
+            background: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Dark mode toggle styles */
+        .checkbox {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .label {
+            background-color: #111;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            position: relative;
+            height: 26px;
+            width: 50px;
+            transform: scale(1.5);
+        }
+
+        .label .ball {
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            height: 22px;
+            width: 22px;
+            transform: translateX(0px);
+            transition: transform 0.2s linear;
+        }
+
+        .checkbox:checked + .label .ball {
+            transform: translateX(24px);
+        }
+
+        .fa-moon-o {
+            color: #f1c40f;
+        }
+
+        .fa-sun-o {
+            color: #f39c12;
+        }
+
+        /* Main content styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .place-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .place-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .place-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .card-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .location i {
+            margin-right: 8px;
+        }
+
+        .explore-btn {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-right: 8px;
+        }
+
+        .rating-count {
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .places-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .label {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition(); }'>
+
+    <nav class="navbar glass" style="height: 70px">
+        <span><a href="#home" style="display: flex; align-items: center"><img class="img2" src="./img/mountain.png"
+                    width="40" style="margin: -25px -10px -25px -20px" />
+                <h1 class="logo">&nbsp;TravelTrek</h1>
+            </a></span>
+        <ul class="nav-links">
+            <!-- <li>
+                <a href="index.ejs#home" id="pri" class="active cir_border">Home</a>
+            </li> -->
+            <!-- <li><a href="#description" id="sec" class="cir_border">About</a></li>
+            <li>
+                <a href="#restaurants" id="tri" class="cir_border">Restaurants</a>
+            </li>
+            <li>
+                <a href="#attractions" id="quad" class="cir_border">Attractions</a>
+            </li>
+            <li>
+                <a href="#accommodations" id="quad" class="cir_border">Accommodations</a>
+            </li>
+            <li><a href="#map" id="quint" class="cir_border">Map</a></li>
+
+            <li> -->
+                <div>
+                    <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <label for="checkbox" class="label">
+                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-sun-o"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+    </nav>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Popular Tourist Destinations</h2>
+            <p>Experience the rich heritage and modern charm of Hyderabad</p>
+        </div>
+
+        <div class="places-grid">
+            <!-- Charminar -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://i.pinimg.com/474x/a6/36/47/a636475d67c3c1eaa57ae785981b9582.jpg" alt="Charminar">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Charminar</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-count">(1,842 reviews)</span>
+                    </div>
+                    <p class="card-description">The iconic 16th-century monument with four grand arches, a mosque, and bustling markets surrounding it. A symbol of Hyderabad's rich history.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Old City</span>
+                        <a href="/charminar" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golconda Fort -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="golconda.jpg" alt="Golconda Fort">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Golconda Fort</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-count">(1,245 reviews)</span>
+                    </div>
+                    <p class="card-description">A majestic fortress known for its acoustic architecture and diamond mines. The light and sound show brings its history to life.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Ibrahim Bagh</span>
+                        <a href="/golconda" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hussain Sagar -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://www.indiatourismguide.in/wp-content/uploads/2017/11/Hussain-Sagar.jpg" alt="Hussain Sagar">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Hussain Sagar</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(2,156 reviews)</span>
+                    </div>
+                    <p class="card-description">A heart-shaped lake with the massive Buddha statue on an island. Perfect for boat rides and evening strolls along the Necklace Road.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Between Hyderabad & Secunderabad</span>
+                        <a href="/hussain-sagar" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shilparamam -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://www.hyderabadtourism.travel/images/visiting-places/headers/shilparamam-hyderabad-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Shilparamam">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Shilparamam</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-count">(892 reviews)</span>
+                    </div>
+                    <p class="card-description">A crafts village showcasing India's rich cultural heritage through handicrafts, traditional arts, and cultural performances.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Madhapur</span>
+                        <a href="/shilparamam" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Durgam Cheruvu -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://www.shutterstock.com/image-photo/aerial-view-durgaam-cheruvu-bridge-600nw-2473329429.jpg" alt="Durgam Cheruvu">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Durgam Cheruvu</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-count">(756 reviews)</span>
+                    </div>
+                    <p class="card-description">A serene hidden lake surrounded by rocks, offering boating facilities and a peaceful escape from the city's hustle.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Jubilee Hills</span>
+                        <a href="/durgamcheruvu" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chilkur Balaji Temple -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://lightuptemples.com/wp-content/uploads/temple/profile_image/%E0%AE%9A%E0%AE%B2%E0%AE%95%E0%AE%95%E0%AE%B0-%E0%AE%AA%E0%AE%B2%E0%AE%9C-%E0%AE%A4%E0%AE%B0%E0%AE%95%E0%AE%95%E0%AE%AF%E0%AE%B2-%E0%AE%A4%E0%AE%B2%E0%AE%99%E0%AE%95%E0%AE%A9.jpg" alt="Chilkur Balaji Temple">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Chilkur Balaji Temple</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(1,532 reviews)</span>
+                    </div>
+                    <p class="card-description">Famous as the 'Visa Balaji' temple, this ancient shrine attracts devotees who walk around the sanctum 11 times for wishes.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Chilkur</span>
+                        <a href="/chilkur" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nehru Zoological Park -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://holidayszone.in/images/sightseeing-places/hyderabad/headers/nehru-zoological-park-hyderabad-tour-header.jpg" alt="Nehru Zoological Park">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Nehru Zoological Park</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-count">(2,345 reviews)</span>
+                    </div>
+                    <p class="card-description">One of India's largest zoos, home to over 1,500 species including lions, tigers, and elephants, with safari rides and a butterfly park.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Bahadurpura</span>
+                        <a href="/zoopark" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ramoji Film City -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://www.hyderabadtourism.travel/images/visiting-places/headers/ramoji-film-city-hyderabad-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Ramoji Film City">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Ramoji Film City</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(3,210 reviews)</span>
+                    </div>
+                    <p class="card-description">The world's largest integrated film city spread over 2000 acres, offering studio tours, entertainment shows, and movie magic experiences.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Anaspur</span>
+                        <a href="/ramoji" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keesaragutta Temple -->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://www.indiatourismguide.in/wp-content/uploads/2018/04/Keesaragutta-Temple.jpg" alt="Keesaragutta Temple">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Keesaragutta Temple</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-count">(678 reviews)</span>
+                    </div>
+                    <p class="card-description">An ancient hilltop temple dedicated to Lord Shiva, known for its scenic location and the annual Maha Shivaratri celebrations.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Medchal</span>
+                        <a href="/keesaragutta" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- bitla temple-->
+            <div class="place-card">
+                <div class="card-image">
+                    <img src="https://i0.wp.com/weekendyaari.in/wp-content/uploads/2024/10/birlamandir-hyd-weekend-yaari-.jpg?fit=800%2C480&ssl=1" alt="Sanjeeviah Park">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Birla Mandir</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-count">(543 reviews)</span>
+                    </div>
+                    <p class="card-description">A beautiful park along the Hussain Sagar lake, featuring lush greenery, walking tracks, and a deer park, perfect for family outings.</p>
+                    <div class="card-footer">
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Khairatabad</span>
+                        <a href="/birlamandir" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>TravelTrek Hyderabad</h3>
+            <p>Your perfect guide to exploring the City of Pearls</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2025 TravelTrek. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const checkbox = document.getElementById('checkbox');
+        const body = document.body;
+
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Mobile menu functionality
+        const menuBtn = document.querySelector(".menu-btn");
+        const navlinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navlinks.classList.toggle("mobile-menu");
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
